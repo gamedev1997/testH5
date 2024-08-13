@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Angry Heroes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<meta name="generator" content="Scirra Construct">
+	<meta name="author" content="InfinitGames">
+	<link rel="manifest" href="appmanifest.json">
+	<link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png">
+	<link rel="icon" type="image/png" href="icons/icon-256.png">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- client Loading style -->
+<style>
+	.overlay {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: #031D2B; /* Black with 70% opacity */
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 9999; /* Ensures it appears on top of other content */
+	}
+  
+	.loader {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  width: 100px; /* Adjust circle size */
+	  height: 100px; /* Adjust circle size */
+	  border: 4px solid #031D2B; /* White border */
+	  border-top: 4px solid #39FBC4; /* Red border on top */
+	  border-radius: 50%; /* Circular border */
+	  animation: spin 2s linear infinite; /* Rotate animation */
+	}
+
+	.app-icon-container {
+width: 95px; /* Adjust icon container size */
+height: 95px; /* Adjust icon container size */
+border-radius: 50%; /* Circular border */
+overflow: hidden; /* Ensures the icon is clipped within the container */
+position: absolute;
+/* top: calc(50% - 30px); /* Center vertically */
+/* left: calc(50% - 30px); Center horizontally */ 
+}
+
+.app-icon {
+width: 100%;
+height: 100%;
+}
+  
+	@keyframes spin {
+	  0% { transform: translate(-50%, -50%) rotate(0deg); }
+	  100% { transform: translate(-50%, -50%) rotate(360deg); }
+	}
+  
+	.hidden {
+	  display: none; /* Hides the loader */
+	}
+  </style>
+
+
+
+
+</head>
+<body>
+
+	<!-- client Loading -->
+	<div class="overlay" id="overlay">
+		<div class="app-icon-container">
+			<img class="app-icon" src="icons/icon-128.png" alt="App Icon">
+		  </div>
+		<div class="loader"></div>
+	  </div>
+	  <script>
+		function gameLoaded() {
+		  var loader = document.getElementById('overlay');
+		  loader.classList.add('hidden');
+		}
+	  </script>
+
+<script>
+if (location.protocol.substr(0, 4) === "file")
+{
+	alert("Web exports won't work until you upload them. (When running on the file: protocol, browsers block many features from working for security reasons.)");
+}
+</script>
+	<script src="box2d.wasm.js"></script>
+	<noscript>
+		<div id="notSupportedWrap">
+			<h2 id="notSupportedTitle">This content requires JavaScript</h2>
+			<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
+		</div>
+	</noscript>
+	<script src="scripts/modernjscheck.js"></script>
+	<script src="scripts/supportcheck.js"></script>
+	<script src="scripts/offlineclient.js" type="module"></script>
+	<script src="scripts/main.js" type="module"></script>
+	<script src="scripts/register-sw.js" type="module"></script>
+	<script src="simplio-user-info-sdk.umd.js"></script> 
+
+	<script src="simplioSDK.js"></script>
+
+</body>
+</html>
